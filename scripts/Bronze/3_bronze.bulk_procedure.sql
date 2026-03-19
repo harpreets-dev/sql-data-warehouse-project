@@ -8,19 +8,14 @@ Script Purpose:
     - Truncates the bronze tables before loading data.
     - Uses the `BULK INSERT` command to load data from csv Files to bronze tables.
 
-Parameters:
-    None. 
-	  This stored procedure does not accept any parameters or return any values.
-
-Usage Example:
+To execute it :
     EXEC bronze.load_bronze;
 ===============================================================================
 */
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 BEGIN
-	DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME; 
+	DECLARE @start_time DATETIME, @end_time DATETIME; 
 	BEGIN TRY
-		SET @batch_start_time = GETDATE();
 		PRINT '================================================';
 		PRINT 'Loading Bronze Layer';
 		PRINT '================================================';
@@ -124,7 +119,6 @@ BEGIN
 		PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
 		PRINT '>> -------------';
 
-		SET @batch_end_time = GETDATE();
 		PRINT '=========================================='
 		PRINT 'Loading Bronze Layer is Completed';
         PRINT '   - Total Load Duration: ' + CAST(DATEDIFF(SECOND, @batch_start_time, @batch_end_time) AS NVARCHAR) + ' seconds';
