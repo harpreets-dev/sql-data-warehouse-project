@@ -20,7 +20,7 @@ IF EXISTS (SELECT *
            FROM sys.databases 
            WHERE name = 'DataWarehouse')
 BEGIN
-    DROP DATABASE warehouse1;
+    DROP DATABASE DataWarehouse;
 END
 GO
 
