@@ -4,8 +4,10 @@ DDL Script: Create Silver Tables
 ===============================================================================
 Script Purpose:
     This script creates tables in the 'silver' schema, dropping existing tables 
-    if they already exist.
-	  Run this script to re-define the DDL structure of 'bronze' Tables
+    if they already exist. Also we added aditional column to each table named:
+	dwh_create_date    DATETIME2 DEFAULT GETDATE() and set default value in it
+	to track creation date
+	 
 ===============================================================================
 */
 
